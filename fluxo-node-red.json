@@ -1,0 +1,227 @@
+[
+    {
+        "id": "0010c78c7cc61236",
+        "type": "tab",
+        "label": "Monitoramento Aquático ODS6",
+        "disabled": false,
+        "info": "Fluxo para monitoramento e controle da temperatura da água usando ESP32, MQTT e Node-RED."
+    },
+    {
+        "id": "60c22bb20de28d07",
+        "type": "mqtt in",
+        "z": "0010c78c7cc61236",
+        "name": "Leitura Temperatura",
+        "topic": "ods6_iot/agua/temperatura",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "ea99c89d.bf70d8",
+        "inputs": 0,
+        "x": 640,
+        "y": 280,
+        "wires": [
+            [
+                "754bc3af72b7a725",
+                "ca23ec41d50c3043"
+            ]
+        ]
+    },
+    {
+        "id": "754bc3af72b7a725",
+        "type": "ui_gauge",
+        "z": "0010c78c7cc61236",
+        "name": "Temperatura da Água",
+        "group": "aa2cf309e0d56b6e",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Temperatura (°C)",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 50,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": 28,
+        "seg2": 35,
+        "x": 880,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ca23ec41d50c3043",
+        "type": "ui_chart",
+        "z": "0010c78c7cc61236",
+        "name": "Histórico",
+        "group": "aa2cf309e0d56b6e",
+        "order": 2,
+        "width": 12,
+        "height": 4,
+        "label": "Histórico da Temperatura",
+        "chartType": "line",
+        "xformat": "HH:mm:ss",
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "colors": [
+            "#1f77b4"
+        ],
+        "outputs": 1,
+        "x": 890,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "14e0188138f470d3",
+        "type": "mqtt in",
+        "z": "0010c78c7cc61236",
+        "name": "Status Atuador",
+        "topic": "ods6_iot/agua/status",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "ea99c89d.bf70d8",
+        "inputs": 0,
+        "x": 650,
+        "y": 380,
+        "wires": [
+            [
+                "3df116fb8487e791"
+            ]
+        ]
+    },
+    {
+        "id": "3df116fb8487e791",
+        "type": "ui_text",
+        "z": "0010c78c7cc61236",
+        "group": "aa2cf309e0d56b6e",
+        "order": 3,
+        "width": 12,
+        "height": 2,
+        "name": "Status do Sistema",
+        "label": "Status do Atuador",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 880,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "0fc51b0122193d1b",
+        "type": "mqtt in",
+        "z": "0010c78c7cc61236",
+        "name": "Alerta LED",
+        "topic": "ods6_iot/agua/alerta",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "ea99c89d.bf70d8",
+        "inputs": 0,
+        "x": 660,
+        "y": 440,
+        "wires": [
+            [
+                "21da9a301533a531"
+            ]
+        ]
+    },
+    {
+        "id": "21da9a301533a531",
+        "type": "ui_led",
+        "z": "0010c78c7cc61236",
+        "order": 4,
+        "group": "aa2cf309e0d56b6e",
+        "width": 3,
+        "height": 1,
+        "label": "Alerta Temperatura",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "true",
+                "valueType": "bool"
+            },
+            {
+                "color": "#00ff00",
+                "value": "false",
+                "valueType": "bool"
+            }
+        ],
+        "shape": "circle",
+        "showGlow": true,
+        "x": 890,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "b1a601d8fe8646d7",
+        "type": "ui_text_input",
+        "z": "0010c78c7cc61236",
+        "label": "Novo limite de temperatura",
+        "group": "aa2cf309e0d56b6e",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "mode": "number",
+        "delay": "300",
+        "sendOnBlur": true,
+        "x": 660,
+        "y": 500,
+        "wires": [
+            [
+                "56a0c50f8e248a4c"
+            ]
+        ]
+    },
+    {
+        "id": "56a0c50f8e248a4c",
+        "type": "mqtt out",
+        "z": "0010c78c7cc61236",
+        "name": "Publica Limite",
+        "topic": "ods6_iot/agua/config/limite",
+        "qos": "0",
+        "broker": "ea99c89d.bf70d8",
+        "x": 900,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ea99c89d.bf70d8",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Broker",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "nodeRedDashboardClient",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "aa2cf309e0d56b6e",
+        "type": "ui_group",
+        "name": "Painel IoT",
+        "tab": "07c159377dc321bd",
+        "order": 1,
+        "disp": true,
+        "width": 12
+    },
+    {
+        "id": "07c159377dc321bd",
+        "type": "ui_tab",
+        "name": "Dashboard Temperatura",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
