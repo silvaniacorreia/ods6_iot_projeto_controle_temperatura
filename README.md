@@ -2,7 +2,14 @@
 
 Este projeto simula um sistema de monitoramento da temperatura da água com ESP32, sensor DHT22 e controle por servo motor. A comunicação é realizada via protocolo MQTT, com visualização e controle por dashboard em Node-RED.
 
-## 🛠 Componentes Utilizados
+## Demonstração Online
+
+Você pode testar o funcionamento deste projeto diretamente no simulador Wokwi:
+
+[Acessar Projeto no Wokwi](https://wokwi.com/projects/429431266882139137)
+
+
+## Componentes Utilizados
 
 - ESP32 DevKit v1 (simulado no Wokwi)
 - Sensor de temperatura DHT22
@@ -20,7 +27,7 @@ Este projeto simula um sistema de monitoramento da temperatura da água com ESP3
 
 O limite de temperatura pode ser alterado dinamicamente via MQTT através do tópico `ods6_iot/agua/config/limite`.
 
-## 🔗 Tópicos MQTT Utilizados
+## Tópicos MQTT Utilizados
 
 Veja o arquivo [`mqtt-topicos.md`](mqtt-topicos.md) com a descrição completa.
 
@@ -31,12 +38,13 @@ Veja o arquivo [`mqtt-topicos.md`](mqtt-topicos.md) com a descrição completa.
 | Diagrama do circuito | ![circuito](imagens/circuito-wokwi.png) |
 | Fluxo do Node-RED | ![fluxo](imagens/node-red-fluxo.png) |
 | Dashboard | ![dashboard](imagens/dashboard-nodered.png) |
+| Fluxograma de Funcionamento | ![fluxo](imagens/fluxograma-funcionamento.png) |
 
-## 📹 Vídeo de Demonstração
+## Vídeo de Demonstração
 
 [Assista no YouTube (não listado)](https://youtu.be/SEU-LINK-AQUI)
 
-## 📈 Resultados
+## Resultados
 
 - Tempo médio entre detecção e envio MQTT: `xx ms`
 - Tempo médio entre envio e acionamento do atuador: `yy ms`
@@ -44,4 +52,10 @@ Veja o arquivo [`mqtt-topicos.md`](mqtt-topicos.md) com a descrição completa.
 (Tabela e gráfico disponíveis na seção de resultados do artigo)
 
 ## Estrutura do Repositório
-
+├── imagens/ # Imagens do circuito e dashboard
+├── sketch.ino # Código principal da ESP32
+├── fluxo-node-red.json # Fluxo do Node-RED
+├── diagram.json # Diagrama do circuito no Wokwi
+├── libraries.txt # Bibliotecas utilizadas
+├── mqtt-topicos.md # Tópicos e estrutura MQTT
+├── README.md
