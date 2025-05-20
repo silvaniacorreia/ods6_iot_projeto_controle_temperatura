@@ -40,22 +40,52 @@ Veja o arquivo [`mqtt-topicos.md`](mqtt-topicos.md) com a descrição completa.
 | Dashboard | ![dashboard](imagens/dashboard-nodered.png) |
 | Fluxograma de Funcionamento | ![fluxo](imagens/fluxograma-funcionamento.png) |
 
-## Vídeo de Demonstração
+## Interfaces e Protocolos
 
-[Assista no YouTube (não listado)](https://youtu.be/SEU-LINK-AQUI)
+Este projeto utiliza comunicação via protocolo MQTT (Message Queuing Telemetry Transport), com os seguintes detalhes:
 
-## Resultados
+- Broker: `broker.hivemq.com`
+- Porta: 1883
+- Comunicação TCP/IP
+- Publicações e assinaturas:
+  - `ods6_iot/agua/temperatura` – publicação de temperatura
+  - `ods6_iot/agua/status` – status textual
+  - `ods6_iot/agua/alerta` – controle de LED
+  - `ods6_iot/agua/config/limite` – configuração remota do limite
 
-- Tempo médio entre detecção e envio MQTT: `xx ms`
-- Tempo médio entre envio e acionamento do atuador: `yy ms`
+A troca de mensagens é gerenciada via biblioteca `PubSubClient` e visualizada com o Node-RED.
 
-(Tabela e gráfico disponíveis na seção de resultados do artigo)
+## Como Executar este Projeto (Wokwi + Node-RED)
+
+### 1. Rodar o Projeto no Wokwi
+
+1. Acesse [o projeto no Wokwi](https://wokwi.com/projects/429431266882139137)
+2. Rode a simulação e acompanhe o monitor serial com os dados MQTT sendo publicados.
+
+### 2. Rodar o Dashboard em Node-RED
+
+**Pré-requisitos:**
+- Node.js instalado
+- Node-RED instalado: `npm install -g --unsafe-perm node-red`
+- Plugin: `node-red-contrib-ui-led` instalado pelo Gerenciar Paleta
+
+**Passos:**
+1. Rode o Node-RED: `node-red`
+2. Acesse [http://localhost:1880](http://localhost:1880)
+3. Importe o arquivo `fluxo-node-red.json`
+4. Acesse o dashboard: [http://localhost:1880/ui](http://localhost:1880/ui)
 
 ## Estrutura do Repositório
-├── imagens/ # Imagens do circuito e dashboard
-├── sketch.ino # Código principal da ESP32
-├── fluxo-node-red.json # Fluxo do Node-RED
-├── diagram.json # Diagrama do circuito no Wokwi
-├── libraries.txt # Bibliotecas utilizadas
-├── mqtt-topicos.md # Tópicos e estrutura MQTT
-├── README.md
+```
+├── imagens/                 # Imagens do circuito, dashboard e fluxograma
+│   ├── circuito-wokwi.png
+│   ├── dashboard-nodered.png
+│   ├── node-red-fluxo.png
+│   └── fluxograma-funcionamento.png
+├── sketch.ino               # Código principal do ESP32
+├── fluxo-node-red.json      # Fluxo do Node-RED exportado
+├── diagram.json             # Diagrama de montagem (Wokwi)
+├── libraries.txt            # Bibliotecas utilizadas no Wokwi
+├── mqtt-topicos.md          # Descrição dos tópicos MQTT utilizados
+├── README.md                # Este arquivo
+```
