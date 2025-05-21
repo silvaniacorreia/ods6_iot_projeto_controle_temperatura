@@ -29,7 +29,7 @@ O limite de temperatura pode ser alterado dinamicamente via MQTT através do tó
 
 ## Tópicos MQTT Utilizados
 
-Veja o arquivo [`mqtt-topicos.md`](mqtt-topicos.md) com a descrição completa.
+Veja o arquivo [`mqtt-topicos.md`](mqtt-topics.md) com a descrição completa.
 
 ## Imagens do Projeto
 
