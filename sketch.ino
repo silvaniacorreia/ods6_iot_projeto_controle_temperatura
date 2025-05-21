@@ -25,6 +25,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     TEMP_LIMITE = message.toFloat();
     Serial.print("Novo limite de temperatura definido: ");
     Serial.println(TEMP_LIMITE);
+    Serial.println(millis());
   }
 }
 
@@ -67,6 +68,8 @@ void loop() {
   }
   client.loop();
 
+  Serial.print("Início leitura: ");
+  Serial.println(millis());
   TempAndHumidity data = dht.getTempAndHumidity();
 
   if (isnan(data.temperature)) {
@@ -79,10 +82,15 @@ void loop() {
     char tempString[8];
     dtostrf(data.temperature, 1, 2, tempString);
     client.publish("ods6_iot/agua/temperatura", tempString);
+    Serial.print("Após publicação: ");
+    Serial.println(millis());
+
 
     if (data.temperature > TEMP_LIMITE) {
       myServo.write(0);
       Serial.println("Temperatura alta! Atuador acionado.");
+      Serial.print("Servo acionado em: ");
+      Serial.println(millis());
 
       String mensagem = "Temperatura acima de " + String(TEMP_LIMITE) + " °C, atuador acionado.";
       client.publish("ods6_iot/agua/status", mensagem.c_str());
@@ -101,4 +109,3 @@ void loop() {
 
   delay(3000);
 }
-
