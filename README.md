@@ -37,7 +37,6 @@ Veja o arquivo [`mqtt-topicos.md`](mqtt-topicos.md) com a descrição completa.
 |----------|--------|
 | Diagrama do circuito | ![circuito](imagens/circuito-wokwi.png) |
 | Fluxo do Node-RED | ![fluxo](imagens/node-red-fluxo.png) |
-| Fluxo do Node-RED | ![fluxo](imagens/node-red-fluxo.png) |
 | Dashboard | ![dashboard](imagens/dashboard-nodered.png) |
 | Fluxograma de Funcionamento | ![fluxo](imagens/fluxograma-funcionamento.png) |
 
