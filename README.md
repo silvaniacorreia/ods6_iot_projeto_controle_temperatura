@@ -80,12 +80,12 @@ A troca de mensagens é gerenciada via biblioteca `PubSubClient` e visualizada c
 ├── imagens/                 # Imagens do circuito, dashboard e fluxograma
 │   ├── circuito-wokwi.png
 │   ├── dashboard-nodered.png
-│   ├── node-red-fluxo.png
+│   ├── node-red-fluxo-final.png
 │   └── fluxograma-funcionamento.png
 ├── sketch.ino               # Código principal do ESP32
 ├── fluxo-node-red.json      # Fluxo do Node-RED exportado
 ├── diagram.json             # Diagrama de montagem (Wokwi)
 ├── libraries.txt            # Bibliotecas utilizadas no Wokwi
-├── mqtt-topicos.md          # Descrição dos tópicos MQTT utilizados
+├── mqtt-topics.md          # Descrição dos tópicos MQTT utilizados
 ├── README.md                # Este arquivo
 ```
