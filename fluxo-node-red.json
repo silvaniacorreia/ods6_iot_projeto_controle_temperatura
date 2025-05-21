@@ -7,6 +7,189 @@
         "info": "Fluxo para monitoramento e controle da temperatura da água usando ESP32, MQTT e Node-RED."
     },
     {
+        "id": "bb982383a381788e",
+        "type": "mqtt-broker",
+        "name": "broker",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "dd72f5ea5be92d77",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "fc22afc484064632",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ea99c89d.bf70d8",
+        "type": "mqtt-broker",
+        "name": "HiveMQ Broker",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "nodeRedDashboardClient",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "07c159377dc321bd",
+        "type": "ui_tab",
+        "name": "Dashboard Temperatura",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "aa2cf309e0d56b6e",
+        "type": "ui_group",
+        "name": "Painel IoT",
+        "tab": "07c159377dc321bd",
+        "order": 1,
+        "disp": true,
+        "width": 12
+    },
+    {
+        "id": "e26826534dc30688",
+        "type": "ui_group",
+        "name": "Temperatura",
+        "tab": "dd72f5ea5be92d77",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "60c22bb20de28d07",
         "type": "mqtt in",
         "z": "0010c78c7cc61236",
@@ -168,11 +351,11 @@
         "mode": "number",
         "delay": "300",
         "sendOnBlur": true,
-        "x": 660,
+        "x": 440,
         "y": 500,
         "wires": [
             [
-                "56a0c50f8e248a4c"
+                "410675aefbcf9210"
             ]
         ]
     },
@@ -184,44 +367,28 @@
         "topic": "ods6_iot/agua/config/limite",
         "qos": "0",
         "broker": "ea99c89d.bf70d8",
-        "x": 900,
+        "x": 1060,
         "y": 500,
         "wires": []
     },
     {
-        "id": "ea99c89d.bf70d8",
-        "type": "mqtt-broker",
-        "name": "HiveMQ Broker",
-        "broker": "broker.hivemq.com",
-        "port": "1883",
-        "clientid": "nodeRedDashboardClient",
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    },
-    {
-        "id": "aa2cf309e0d56b6e",
-        "type": "ui_group",
-        "name": "Painel IoT",
-        "tab": "07c159377dc321bd",
-        "order": 1,
-        "disp": true,
-        "width": 12
-    },
-    {
-        "id": "07c159377dc321bd",
-        "type": "ui_tab",
-        "name": "Dashboard Temperatura",
-        "icon": "dashboard",
-        "order": 1
+        "id": "410675aefbcf9210",
+        "type": "function",
+        "z": "0010c78c7cc61236",
+        "name": "Log de Envio",
+        "func": "const now = new Date();\nconst hora = now.toLocaleTimeString();\nnode.warn(`Novo limite publicado: ${msg.payload} às ${hora}`);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 500,
+        "wires": [
+            [
+                "56a0c50f8e248a4c"
+            ]
+        ]
     }
 ]
