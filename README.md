@@ -1,6 +1,6 @@
 # 💧 Projeto IoT – Monitoramento de Temperatura da Água com MQTT
 
-Este projeto simula um sistema de monitoramento da temperatura da água com ESP32, sensor DHT22 e controle por servo motor. A comunicação é realizada via protocolo MQTT, com visualização e controle por dashboard em Node-RED.
+Este projeto simula um sistema de monitoramento da temperatura da água com ESP32, sensor DHT22 e controle por servo motor. A comunicação é realizada via protocolo MQTT, com visualização e controle por dashboard em Node-RED. Para detalhes do desenvolvimento e resultados, acesse o [artigo do projeto](temperatura_aquatica_iot.pdf).
 
 ## Demonstração Online
 
@@ -78,15 +78,16 @@ A troca de mensagens é gerenciada via biblioteca `PubSubClient` e visualizada c
 
 ## Estrutura do Repositório
 ```
-├── imagens/                 # Imagens do circuito, dashboard e fluxograma
+├── imagens/                        # Imagens do circuito, dashboard e fluxograma
 │   ├── circuito-wokwi.png
 │   ├── dashboard-nodered.png
 │   ├── node-red-fluxo-final.png
 │   └── fluxograma-funcionamento.png
-├── sketch.ino               # Código principal do ESP32
-├── fluxo-node-red.json      # Fluxo do Node-RED exportado
-├── diagram.json             # Diagrama de montagem (Wokwi)
-├── libraries.txt            # Bibliotecas utilizadas no Wokwi
-├── mqtt-topics.md          # Descrição dos tópicos MQTT utilizados
-├── README.md                # Este arquivo
+├── sketch.ino                      # Código principal do ESP32
+├── fluxo-node-red.json             # Fluxo do Node-RED exportado
+├── diagram.json                    # Diagrama de montagem (Wokwi)
+├── libraries.txt                   # Bibliotecas utilizadas no Wokwi
+├── mqtt-topics.md                  # Descrição dos tópicos MQTT utilizados
+├── temperatura_aquatica_iot.pdf    # Artigo sobre o projeto
+├── README.md                       # Este arquivo
 ```
